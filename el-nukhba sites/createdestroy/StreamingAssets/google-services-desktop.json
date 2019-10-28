@@ -1,0 +1,37 @@
+{
+  "client": [
+    {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "452450921704-db394p6q8up6bm3kg87jh4j1oqouudue.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyCubkhwe4aUjS5DQMWztOMSXPvF3vNiOEY"
+        }
+      ], 
+      "client_info": {
+        "mobilesdk_app_id": "1:452450921704:ios:5a9ea0a78c0b65ff126d5d", 
+        "android_client_info": {
+          "package_name": "com.amincloud.createdestroy"
+        }
+      }
+    }
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "the-success-63b22.appspot.com", 
+    "project_id": "the-success-63b22", 
+    "firebase_url": "https://the-success-63b22.firebaseio.com", 
+    "project_number": "452450921704"
+  }
+}
