@@ -1,0 +1,1453 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Aeries Student Portal
+</title><meta id="ctl00_viewport" name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /><link rel="icon" href="favicon.ico" type="image/x-icon" /><link href="/Content/AjaxControlToolkit/Styles/Bundle?v=nap9lZtcl5K2gETjyyPCBXbWNbj8GlEheXK38ePUqDw1" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="StyleSheets/aeries.common.min.css?v=20160413" /><link rel="stylesheet" type="text/css" href="StyleSheets/aeries.default.min.css?v=20160413" /><link rel="stylesheet" type="text/css" href="StyleSheets/aeries-responsive.css" /><link rel="stylesheet" type="text/css" href="StyleSheets/Sofia.css" /><link id="ctl00_BaseCSS" rel="stylesheet" type="text/css" href="StyleSheets/GeneralLight.css" /><link rel="stylesheet" type="text/css" href="StyleSheets/calendar-stylesheet.css" /><link rel="stylesheet" type="text/css" href="KendoUI/kendo.common.min.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="KendoUI/kendo.rtl.min.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="KendoUI/kendo.bootstrap.min.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="StyleSheets/bootstrap/bootstrap.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="StyleSheets/bootstrap/bootstrap-tour.min.css?v=20170522" /><link rel="stylesheet" type="text/css" href="KendoUI/kendo.dataviz.min.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="KendoUI/kendo.dataviz.default.min.css?v=2017.1.118" /><link rel="stylesheet" type="text/css" href="StyleSheets/font-awesome/font-awesome.min.css" /><link rel="stylesheet" type="text/css" href="StyleSheets/aeries-kendo-win.min.css" /><link rel="stylesheet" type="text/css" href="StyleSheets/CheckBoxes.min.css?vsn=20150929" /><link rel="stylesheet" type="text/css" href="StyleSheets/aeries-master.min.css?vsn=20160301" />
+
+    <script type="text/javascript" src="ClientScripts/ControlPositions.js?vsn=20190207"></script>
+    <script type="text/javascript" src="ClientScripts/ExpandOut.js"></script>
+    <script type="text/javascript" src="ClientScripts/XMLCommunications.js"></script>
+    <script type="text/javascript" src="ClientScripts/xmldom.js"></script>
+	<script type="text/javascript" src="Scripts/require/TimeOut.js?vsn=20180509"></script>
+
+    <script type="text/javascript" src="ClientScripts/calendar.js?vsn20141202"></script>
+    
+	<script type="text/javascript" src="ClientScripts/EmailStuff.js?vsn=20160428"></script>
+	<script type="text/javascript" src="ClientScripts/jquery.min.js?v=1.12.3"></script>
+	<script type="text/javascript" src="ClientScripts/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="ClientScripts/jquery.validate.unobtrusive.min.js"></script>
+	<script type="text/javascript" src="ClientScripts/jquery.unobtrusive-ajax.min.js"></script>
+	<script type="text/javascript" src="KendoUI/kendo.all.min.js?v=2017.1.118"></script>
+	<script type="text/javascript" src="KendoUI/kendo.aspnetmvc.min.js?v=2017.1.118"></script>
+	<script type="text/javascript" src="Scripts/velocity.min.js"></script>
+    <script type="text/javascript" src="ClientScripts/General.js?vsn=20190701"></script>
+
+	<script type="text/javascript" src="ClientScripts/StudentBackpack.js?vsn=20161208"></script>
+
+    <script type="text/javascript">window.defaultStatus="Welcome to Aeries";</script>
+
+	<script type="text/javascript" src="ClientScripts/aeries-kendo-windows-1.0.4.js?vsn=20160401"></script>
+	<script type="text/javascript" src="ClientScripts/UserOptions.js?vsn=20160504"></script>
+	<script type="text/javascript" src="ClientScripts/aeries-pagination.js?vsn=20160309"></script>
+
+	
+	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="ClientScripts/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="Scripts/bootstrap-tour.min.js?v=20170522"></script>
+	<script type="text/javascript" src="ClientScripts/Tours.js?v=20180227"></script>
+
+	<script type='text/javascript' src='Tracking.vbhtml?637087515757213473'></script>
+	<script type='text/javascript' src='ClientScripts/demo-feedback_js.js'></script>
+	<link rel="stylesheet" type="text/css" href="ClientScripts/demo-feedback_css.css" />
+	<script type="text/javascript" src="Scripts/require/widgets/views/quicksearch/quicksearch.js"></script>
+	<script type="text/javascript" src="ClientScripts/aeries-requiredfields.js?vsn=9.19.10.17"></script>
+	<!-- PM - disable tracking for now.
+	<link rel='stylesheet' type='text/css' href='//aeriestools.tech/screenshot-feedback/feedback.css?637087515757213473' />
+<script type='text/javascript' src='//aeriestools.tech/tracking.js?637087515757213473'></script>
+
+	-->
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			if (kendo.support.mobileOS) {
+
+				//GeneralFunctions.IsDemoServer(CheckForMobileVersion_IsDemoServer_Complete);
+			}
+
+			// Student Name Drop Down
+			$(document).on('click', '.student-full-name', function () {
+				if ($("#change-student-dd:hidden").length >= 1) {
+					$("#change-student").find(".icon-collapsed").removeClass('icon-collapsed').addClass('icon-expanded');
+					$("#change-student-dd").show();
+					// SlimScroll for student DD
+					$("#change-student-dd .namelist").slimScroll({
+						size: '8px',
+						color: '#C8C9C9',
+						opacity: "100%",
+						wheelStep: 10,
+						touchScrollStep: 75
+					});
+				} else {
+					$("#change-student").find(".icon-expanded").removeClass('icon-expanded').addClass('icon-collapsed');
+					$("#change-student-dd").hide();
+					$("#change-student-dd .namelist").slimScroll({ destroy: true });
+				}
+			});
+
+			// Close Student Name Drop Down if you click anywhere else
+			$(document).on('click', function (e) {
+				if ($(e.target).closest('#student-name-control').length <= 0 && $(e.target).closest('.slimScrollDiv').length <= 0) {
+					if ($("#change-student-dd").length > 0) {
+						$("#change-student").find(".icon-expanded").removeClass('icon-expanded').addClass('icon-collapsed');
+						$("#change-student-dd").hide();
+						$("#change-student-dd .namelist").slimScroll({ destroy: true });
+					}
+				}
+			});
+
+		});
+
+	</script>
+
+<style type="text/css">
+	.SSAstyle {
+		border-style:solid none solid none;
+	}
+
+	.smallmenu i.fa {
+		font-size:12pt;
+		padding-left:3px;
+	}
+
+	.smallmenu i.fa:hover {
+		color: gray;
+	}
+
+</style>
+
+    </head>
+
+<body id="ctl00_body" class="MainParent" leftmargin="8" topmargin="0" marginwidth="8" marginheight="0">
+  
+  <form method="post" action="./default.aspx" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3MTg2ODg1NjgPFgQeD0hpZGVDb250YWN0SW5mb2geE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCZg9kFgICAw9kFgJmD2QWDAIBD2QWAmYPZBYKZg9kFgICAQ8PFgIeBFRleHQFCTIwMTktMjAyMGRkAgEPDxYEHwIFCUNsYXJlbW9udB4HVG9vbFRpcAUKU2Nob29sIDIwMWRkAgYPDxYCHwIFGHNfYW1pbi5hbG9nYWlsaUBvdXNkLm9yZ2RkAgcPFgIeB1Zpc2libGVoZAIID2QWAmYPFgIeCWlubmVyaHRtbAWMKDx0YWJsZSB3aWR0aD0iMTAwJSIgYm9yZGVyPSIwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPjx0cj48dGQgYWxpZ249ImxlZnQiIGNsYXNzPSJyYWlzZWQgIj48dGFibGUgY2xhc3M9Im1lbnV0YWJsZSIgYm9yZGVyPSIwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPjx0ciB2YWxpZ249InRvcCI+PHRkPjxkaXYgaWQ9IlRvcF8xIiBjbGFzcz0iVG9wX1BhcmVudCI+PGEgY2xhc3M9InRvcGR5bmFtaWNtZW51IiBocmVmPSJEZWZhdWx0LmFzcHgiIG5hbWU9IkhvbWUiIGlkPSJIb21lIiB0YXJnZXQ9IiIgYXJpYS1oYXNwb3B1cD0idHJ1ZSIgb25DbGljaz0icmV0dXJuIHRydWUiPkhvbWU8L2E+PC9kaXY+PC90ZD48dGQ+PGRpdiBpZD0iVG9wXzIiIGNsYXNzPSJUb3BfUGFyZW50Ij48YSBjbGFzcz0idG9wZHluYW1pY21lbnUiIGhyZWY9ImphdmFzY3JpcHQ6dm9pZCgwKTsiIG5hbWU9IlN0dWRlbnQgSW5mbyIgaWQ9IlN0dWRlbnQgSW5mbyIgdGFyZ2V0PSIiIGFyaWEtaGFzcG9wdXA9InRydWUiIG9uQ2xpY2s9InJldHVybiB0cnVlIj5TdHVkZW50IEluZm88L2E+PGRpdiBpZD0iU3ViXzIiIGNsYXNzPSJTdWJUYWIiPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iU3R1ZGVudFByb2ZpbGUuYXNweCIgbmFtZT0iUHJvZmlsZSIgaWQ9IlByb2ZpbGUiPlByb2ZpbGU8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJTdHVkZW50cy5hc3B4IiBuYW1lPSJEZW1vZ3JhcGhpY3MiIGlkPSJEZW1vZ3JhcGhpY3MiPkRlbW9ncmFwaGljczwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IkVtZXJnZW5jeUNvbnRhY3RzLmFzcHgiIG5hbWU9IkNvbnRhY3RzIiBpZD0iQ29udGFjdHMiPkNvbnRhY3RzPC9hPjwvZGl2PjwvZGl2PjwvdGQ+PHRkPjxkaXYgaWQ9IlRvcF8zIiBjbGFzcz0iVG9wX1BhcmVudCI+PGEgY2xhc3M9InRvcGR5bmFtaWNtZW51IiBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCk7IiBuYW1lPSJBdHRlbmRhbmNlIiBpZD0iQXR0ZW5kYW5jZSIgdGFyZ2V0PSIiIGFyaWEtaGFzcG9wdXA9InRydWUiIG9uQ2xpY2s9InJldHVybiB0cnVlIj5BdHRlbmRhbmNlPC9hPjxkaXYgaWQ9IlN1Yl8zIiBjbGFzcz0iU3ViVGFiIj48YSBjbGFzcz0iemVicmEiIGhyZWY9IkF0dGVuZGFuY2UuYXNweCIgbmFtZT0iQXR0ZW5kYW5jZSIgaWQ9IkF0dGVuZGFuY2UiPkF0dGVuZGFuY2U8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJFbnJvbGxtZW50SGlzdG9yeS5hc3B4IiBuYW1lPSJFbnJvbGxtZW50IEhpc3RvcnkiIGlkPSJFbnJvbGxtZW50IEhpc3RvcnkiPkVucm9sbG1lbnQgSGlzdG9yeTwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IkF0dGVuZGFuY2VIaXN0b3J5LmFzcHgiIG5hbWU9IkF0dGVuZGFuY2UgSGlzdG9yeSIgaWQ9IkF0dGVuZGFuY2UgSGlzdG9yeSI+QXR0ZW5kYW5jZSBIaXN0b3J5PC9hPjwvZGl2PjwvZGl2PjwvdGQ+PHRkPjxkaXYgaWQ9IlRvcF80IiBjbGFzcz0iVG9wX1BhcmVudCI+PGEgY2xhc3M9InRvcGR5bmFtaWNtZW51IiBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCk7IiBuYW1lPSJHcmFkZXMiIGlkPSJHcmFkZXMiIHRhcmdldD0iIiBhcmlhLWhhc3BvcHVwPSJ0cnVlIiBvbkNsaWNrPSJyZXR1cm4gdHJ1ZSI+R3JhZGVzPC9hPjxkaXYgaWQ9IlN1Yl80IiBjbGFzcz0iU3ViVGFiIj48YSBjbGFzcz0iemVicmEiIGhyZWY9IkdyYWRlYm9va1N1bW1hcnkuYXNweCIgbmFtZT0iR3JhZGVib29rIiBpZD0iR3JhZGVib29rIj5HcmFkZWJvb2s8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJHcmFkZWJvb2tEZXRhaWxzLmFzcHgiIG5hbWU9IkdyYWRlYm9vayBEZXRhaWxzIiBpZD0iR3JhZGVib29rIERldGFpbHMiPkdyYWRlYm9vayBEZXRhaWxzPC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iU3R1ZGVudFNCRy5hc3B4IiBuYW1lPSJTdGFuZGFyZHMgQmFzZWQgUmVwb3J0IENhcmQiIGlkPSJTdGFuZGFyZHMgQmFzZWQgUmVwb3J0IENhcmQiPlN0YW5kYXJkcyBCYXNlZCBSZXBvcnQgQ2FyZDwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IlN0dWRlbnRTdGFuZGFyZHNCYXNlZEhpc3RvcnkuYXNweCIgbmFtZT0iU3RhbmRhcmRzIEJhc2VkIEhpc3RvcnkiIGlkPSJTdGFuZGFyZHMgQmFzZWQgSGlzdG9yeSI+U3RhbmRhcmRzIEJhc2VkIEhpc3Rvcnk8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJHcmFkZXMuYXNweCIgbmFtZT0iR3JhZGVzIiBpZD0iR3JhZGVzIj5HcmFkZXM8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJTdHVkZW50R3JhZGVIaXN0b3J5LmFzcHgiIG5hbWU9IkdyYWRlIEhpc3RvcnkiIGlkPSJHcmFkZSBIaXN0b3J5Ij5HcmFkZSBIaXN0b3J5PC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iR3JhZHVhdGlvblJlcXVpcmVtZW50cy5hc3B4IiBuYW1lPSJHcmFkdWF0aW9uIFN0YXR1cyIgaWQ9IkdyYWR1YXRpb24gU3RhdHVzIj5HcmFkdWF0aW9uIFN0YXR1czwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IlRyYW5zY3JpcHRzLmFzcHgiIG5hbWU9IlRyYW5zY3JpcHRzIDxzcGFuIGNsYXNzPSdtZXRhZGF0YScgc3R5bGU9J2Rpc3BsYXk6IG5vbmU7Jz5IaXN0b3J5PC9zcGFuPiIgaWQ9IlRyYW5zY3JpcHRzIDxzcGFuIGNsYXNzPSdtZXRhZGF0YScgc3R5bGU9J2Rpc3BsYXk6IG5vbmU7Jz5IaXN0b3J5PC9zcGFuPiI+VHJhbnNjcmlwdHMgPHNwYW4gY2xhc3M9J21ldGFkYXRhJyBzdHlsZT0nZGlzcGxheTogbm9uZTsnPkhpc3Rvcnk8L3NwYW4+PC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iU3R1ZGVudFN0YW5kYXJkc0Jhc2VkUHJvZ3Jlc3MuYXNweCIgbmFtZT0iU3RhbmRhcmRzIEJhc2VkIFByb2dyZXNzIERhc2hib2FyZCIgaWQ9IlN0YW5kYXJkcyBCYXNlZCBQcm9ncmVzcyBEYXNoYm9hcmQiPlN0YW5kYXJkcyBCYXNlZCBQcm9ncmVzcyBEYXNoYm9hcmQ8L2E+PC9kaXY+PC9kaXY+PC90ZD48dGQ+PGRpdiBpZD0iVG9wXzUiIGNsYXNzPSJUb3BfUGFyZW50Ij48YSBjbGFzcz0idG9wZHluYW1pY21lbnUiIGhyZWY9ImphdmFzY3JpcHQ6dm9pZCgwKTsiIG5hbWU9IkNsYXNzZXMiIGlkPSJDbGFzc2VzIiB0YXJnZXQ9IiIgYXJpYS1oYXNwb3B1cD0idHJ1ZSIgb25DbGljaz0icmV0dXJuIHRydWUiPkNsYXNzZXM8L2E+PGRpdiBpZD0iU3ViXzUiIGNsYXNzPSJTdWJUYWIiPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iQ2xhc3Nlcy5hc3B4IiBuYW1lPSJDbGFzc2VzIiBpZD0iQ2xhc3NlcyI+Q2xhc3NlczwvYT48L2Rpdj48L2Rpdj48L3RkPjx0ZD48ZGl2IGlkPSJUb3BfNiIgY2xhc3M9IlRvcF9QYXJlbnQiPjxhIGNsYXNzPSJ0b3BkeW5hbWljbWVudSIgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApOyIgbmFtZT0iTWVkaWNhbCIgaWQ9Ik1lZGljYWwiIHRhcmdldD0iIiBhcmlhLWhhc3BvcHVwPSJ0cnVlIiBvbkNsaWNrPSJyZXR1cm4gdHJ1ZSI+TWVkaWNhbDwvYT48ZGl2IGlkPSJTdWJfNiIgY2xhc3M9IlN1YlRhYiI+PGEgY2xhc3M9InplYnJhIiBocmVmPSJJbW11bml6YXRpb25zLmFzcHgiIG5hbWU9IkltbXVuaXphdGlvbnMiIGlkPSJJbW11bml6YXRpb25zIj5JbW11bml6YXRpb25zPC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iSGVhcmluZy5hc3B4IiBuYW1lPSJIZWFyaW5nIiBpZD0iSGVhcmluZyI+SGVhcmluZzwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IlZpc2lvbi5hc3B4IiBuYW1lPSJWaXNpb24iIGlkPSJWaXNpb24iPlZpc2lvbjwvYT48L2Rpdj48L2Rpdj48L3RkPjx0ZD48ZGl2IGlkPSJUb3BfNyIgY2xhc3M9IlRvcF9QYXJlbnQiPjxhIGNsYXNzPSJ0b3BkeW5hbWljbWVudSIgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApOyIgbmFtZT0iVGVzdCBTY29yZXMiIGlkPSJUZXN0IFNjb3JlcyIgdGFyZ2V0PSIiIGFyaWEtaGFzcG9wdXA9InRydWUiIG9uQ2xpY2s9InJldHVybiB0cnVlIj5UZXN0IFNjb3JlczwvYT48ZGl2IGlkPSJTdWJfNyIgY2xhc3M9IlN1YlRhYiI+PGEgY2xhc3M9InplYnJhIiBocmVmPSJUZXN0RGV0YWlscy5hc3B4IiBuYW1lPSJUZXN0IERldGFpbHMiIGlkPSJUZXN0IERldGFpbHMiPlRlc3QgRGV0YWlsczwvYT48YSBjbGFzcz0iemVicmEiIGhyZWY9IlN0YXRlVGVzdFNjb3Jlc1JlcG9ydHMuYXNweCIgbmFtZT0iU3RhdGUgVGVzdCBTY29yZXMgUmVwb3J0cyIgaWQ9IlN0YXRlIFRlc3QgU2NvcmVzIFJlcG9ydHMiPlN0YXRlIFRlc3QgU2NvcmVzIFJlcG9ydHM8L2E+PGEgY2xhc3M9InplYnJhIiBocmVmPSJUZXN0U2NvcmVzLmFzcHgiIG5hbWU9IlRlc3QgU2NvcmVzIiBpZD0iVGVzdCBTY29yZXMiPlRlc3QgU2NvcmVzPC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iQ29sbGVnZVRlc3RTY29yZXMuYXNweCIgbmFtZT0iQ29sbGVnZSBFbnRyYW5jZSBUZXN0cyIgaWQ9IkNvbGxlZ2UgRW50cmFuY2UgVGVzdHMiPkNvbGxlZ2UgRW50cmFuY2UgVGVzdHM8L2E+PC9kaXY+PC9kaXY+PC90ZD48dGQ+PGRpdiBpZD0iVG9wXzgiIGNsYXNzPSJUb3BfUGFyZW50Ij48YSBjbGFzcz0idG9wZHluYW1pY21lbnUiIGhyZWY9ImphdmFzY3JpcHQ6dm9pZCgwKTsiIG5hbWU9IkNoYW5nZSBTdHVkZW50IiBpZD0iQ2hhbmdlIFN0dWRlbnQiIHRhcmdldD0iIiBhcmlhLWhhc3BvcHVwPSJ0cnVlIiBvbkNsaWNrPSJyZXR1cm4gdHJ1ZSI+Q2hhbmdlIFN0dWRlbnQ8L2E+PGRpdiBpZD0iU3ViXzgiIGNsYXNzPSJTdWJUYWIiPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iQ2hhbmdlU3R1ZGVudC5hc3B4P2NhY2hlPTExJTJmNyUyZjIwMTkrMTElM2EyNiUzYTE1K0FNJlNDPTIwMSZTTj0xNzY0OCZSZXR1cm5QYWdlPWRlZmF1bHQuYXNweCZuYW1lPTIwMV8xNzY0OCZpZD0yMDFfMTc2NDgiIG5hbWU9IkFsb2dhaWxpLCBBbWluIFMgLSBHcmQgNiAtIENsYXJlbW9udCIgaWQ9IkFsb2dhaWxpLCBBbWluIFMgLSBHcmQgNiAtIENsYXJlbW9udCI+QWxvZ2FpbGksIEFtaW4gUyAtIEdyZCA2IC0gQ2xhcmVtb250PC9hPjxhIGNsYXNzPSJ6ZWJyYSIgaHJlZj0iQWRkTmV3U3R1ZGVudFRvUGFyZW50LmFzcHgiIG5hbWU9IkFkZCBOZXcgU3R1ZGVudCBUbyBZb3VyIEFjY291bnQiIGlkPSJBZGQgTmV3IFN0dWRlbnQgVG8gWW91ciBBY2NvdW50Ij5BZGQgTmV3IFN0dWRlbnQgVG8gWW91ciBBY2NvdW50PC9hPjwvZGl2PjwvZGl2PjwvdGQ+PC90ZD48L3RyPjwvdGFibGU+PC90ZD48L3RyPjwvdGFibGU+ZAIDDxYCHwRoZAIEDxYCHwRoFgICAw8PFgIfAmVkZAIFD2QWBmYPD2QPEBYBZhYBFgIeDlBhcmFtZXRlclZhbHVlKClZU3lzdGVtLkludDY0LCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFNzUzMDgWAQIFZGQCBQ8WAh8EZxYWAgUPDxYCHwIFJVdlbGNvbWUgdG8gdGhlIEFlcmllcyBQb3J0YWwgZm9yIEFtaW5kZAIRD2QWAgIBD2QWAmYPZBYUZg8PFgIfAgUIQ2FsZW5kYXJkZAIBDw8WAh8EZ2QWAmYPZBYCZg9kFgJmDw8WBB4FV2lkdGgbAAAAAAAAXkABAAAAHgRfIVNCAoACFgIeBXN0eWxlBRBmb250LXNpemU6U21hbGw7ZAICD2QWAmYPDxYEHwcbAAAAAADAYkABAAAAHwgCgAJkZAIIDxYCHgdvbmNsaWNrBZUBJGdldCgnY3RsMDBfTWFpbkNvbnRlbnRfY3RsMTFfdHh0RUlEJykudmFsdWUgPSAnMCc7RGlzcGxheU9uQ2VudGVyU2NyZWVuKCRnZXQoJ2N0bDAwX01haW5Db250ZW50X2N0bDExX0FkZEV2ZW50X1BhbmVsJykpO1Jlc2V0RmllbGRzXygpO3JldHVybiBmYWxzZTtkAgkPDxYCHwIFDUFkZCBOZXcgRXZlbnQWAh8KBZUBJGdldCgnY3RsMDBfTWFpbkNvbnRlbnRfY3RsMTFfdHh0RUlEJykudmFsdWUgPSAnMCc7RGlzcGxheU9uQ2VudGVyU2NyZWVuKCRnZXQoJ2N0bDAwX01haW5Db250ZW50X2N0bDExX0FkZEV2ZW50X1BhbmVsJykpO1Jlc2V0RmllbGRzXygpO3JldHVybiBmYWxzZTtkAgwPDxYCHwIFCURpc3BsYXk6IGRkAg0PEGQPFgJmAgEWAgUDRGF5BQVNb250aBYBZmQCDg8PFgIfBGdkFgICAQ8WAh4LXyFJdGVtQ291bnRmFgJmD2QWAgIBD2QWAgIBD2QWAmYPFQEgWW91IGhhdmUgbm8gZXZlbnRzIGZvciB0aGlzIGRhdGVkAhAPDxYCHwRoZGQCEg9kFgxmD2QWAgIBDw9kFgIfCgVGJGdldCgnY3RsMDBfTWFpbkNvbnRlbnRfY3RsMTFfQWRkRXZlbnRfUGFuZWwnKS5zdHlsZS5kaXNwbGF5ID0gJ25vbmUnO2QCAw9kFgJmD2QWAmYPZBYCZg8PFgQfBxsAAAAAAABeQAEAAAAfCAKAAhYCHwkFEGZvbnQtc2l6ZTpTbWFsbDtkAgQPZBYCZg9kFgJmD2QWAmYPDxYEHwcbAAAAAAAAXkABAAAAHwgCgAIWAh8JBRBmb250LXNpemU6U21hbGw7ZAIIDw8WAh4NT25DbGllbnRDbGljawUccmV0dXJuIENhbGVuZGFyRXZlbnRfQWRkXygpO2RkAgkPDxYCHwwFH3JldHVybiBDYWxlbmRhckV2ZW50X0RlbGV0ZV8oKTtkZAIKDw8WAh8MBR5yZXR1cm4gQ2xvc2VBZGRFdmVudF9QYW5lbF8oKTsWAh8KBUYkZ2V0KCdjdGwwMF9NYWluQ29udGVudF9jdGwxMV9BZGRFdmVudF9QYW5lbCcpLnN0eWxlLmRpc3BsYXkgPSAnbm9uZSc7ZAITDxYCHwRnFgJmD2QWBAIBDw9kDxAWAmYCARYCFgIfBigrBAU3NTMwOBYCHwZkFgICBQIDZGQCCQ9kFgYCAQ8PFgIfAgUNQWxlcnQgT3B0aW9uc2RkAgMPDxYCHwIFR0FkZCB0aHJlc2hvbGRzIHRvIHJlY2VpdmUgYWxlcnRzIHdoZW4gZGF0YSBjaGFuZ2VzIGZvciB5b3VyIHN0dWRlbnQocykuZGQCCQ9kFgQCAQ8PFgIfAgVVVGhlIGZvbGxvd2luZyBzdHVkZW50cyBhcmUgZW5yb2xsZWQgaW4gYSBzY2hvb2wgd2hlcmUgYWxlcnQgdGhyZXNob2xkcyBhcmUgYXZhaWxhYmxlOmRkAgUPFCsAAmRkZAIbDzwrAAkBAA8WBh4IRGF0YUtleXMWAB8LAggfBGdkFhACAQ9kFgJmDxUNAUEKVU5WRVJJRklFRAEwAAEyAAAAATEAAAAAZAICD2QWAmYPFQ0BSQdJTExORVNTATEAATEBMgExATIBMwEzATMAAGQCAw9kFgJmDxUNAVQFVEFSRFkBMAACMTABNAAAATEAAjExAABkAgQPZBYCZg8VDQFVCVVORVhDVVNFRAEyAAE0ATEBMQEyATIBMgExAABkAgUPZBYCZg8VDQFYB0VYQ1VTRUQBMAABMwExAAExATEBMQExAABkAgYPZBYCZg8VDQAKXypUT1RBTFMqXwAAAAAAAAAAAAAAZAIHD2QWAmYPFQ0AB0VYQ1VTRUQBMQEwATQBMwExATMBNAE0ATQBMAEwZAIID2QWAmYPFQ0ACVVORVhDVVNFRAEyATABNgExATEBMgEzATIBMQEwATBkAh0PZBYCZg8PFgIfBGhkFgRmDw9kDxAWAmYCARYCFgIfBgUDMjAxFgIfBmQWAgIFAgNkZAICDzwrAAkBAA8WBB8NFgAfC2ZkZAIfDzwrAAkAZAIjD2QWAmYPZBYEZg8PZA8QFgJmAgEWAhYCHwYFAzIwMRYCHwZkFgICBQIDZGQCAg8WAh8LZhYCZg9kFgRmDxUBCVJlc291cmNlc2QCAQ8VAgRTaXRlC0Rlc2NyaXB0aW9uZAIlD2QWAmYPDxYMHgZUZXN0SUQFBFNCQUMeBlRlc3RUQQUGU1BSRzE5HgVpc0NzdGQeGUxhc3RDRFNfUmVjZW50VGVzdFJlc3VsdHMFDjAxNjEyNTkwMDAwMDAwHgpMYXN0VGVzdElkBQVDRUxEVB4FaXNDU1RnZBYCAgEPZBYCAgEPZBYCZg9kFgICAQ9kFgICAQ8WAh8LAgoWFGYPZBYIAgMPZBYCZg9kFgJmDxUBH09ha2xhbmQgVW5pZmllZCBTY2hvb2wgRGlzdHJpY3RkAgUPFgIfBGdkAgcPFgIfBGcWAmYPZBYEZg8VAxhUZXN0RGV0YWlscy5hc3B4P2lkPVNCQUMTU2VlIGFsbCB0ZXN0IHNjb3JlcwRTQkFDZAIBDw8WAh8EZ2RkAggPFQQLTWF0aGVtYXRpY3MHMDQvMjAxOQATU3RhbmRhcmQgTmVhcmx5IE1ldGQCAQ9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGFRlc3REZXRhaWxzLmFzcHg/aWQ9U0JBQxNTZWUgYWxsIHRlc3Qgc2NvcmVzBFNCQUNkAggPFQQYRW5nbGlzaCBMYW5nIEFydHMgL0xpdGVyBzA0LzIwMTkADFN0YW5kYXJkIE1ldGQCAg9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EZxYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBBdDQSBFbmcuIExhbmcuIERldi4gVGVzdAcwNS8yMDE3J2NvbG9yOiMyYzY2MmQ7YmFja2dyb3VuZC1jb2xvcjojZWVmNmRiOwhBZHZhbmNlZGQCAw9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBBRMaXN0LiAmYW1wOyBTcGVha2luZwcwNS8yMDE3AANOL0FkAgQPZBYIAgMPZBYCZg9kFgJmDxUBH09ha2xhbmQgVW5pZmllZCBTY2hvb2wgRGlzdHJpY3RkAgUPFgIfBGhkAgcPFgIfBGgWAmYPZBYCZg8VAxlUZXN0RGV0YWlscy5hc3B4P2lkPUNFTERUE1NlZSBhbGwgdGVzdCBzY29yZXMFQ0VMRFRkAggPFQQHUmVhZGluZwcwNS8yMDE3J2NvbG9yOiM1YTZhOTM7YmFja2dyb3VuZC1jb2xvcjojZTZlZGZmOw5FYXJseSBBZHZhbmNlZGQCBQ9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBAdXcml0aW5nBzA1LzIwMTcnY29sb3I6IzJjNjYyZDtiYWNrZ3JvdW5kLWNvbG9yOiNlZWY2ZGI7CEFkdmFuY2VkZAIGD2QWCAIDD2QWAmYPZBYCZg8VAR9PYWtsYW5kIFVuaWZpZWQgU2Nob29sIERpc3RyaWN0ZAIFDxYCHwRoZAIHDxYCHwRoFgJmD2QWAmYPFQMZVGVzdERldGFpbHMuYXNweD9pZD1DRUxEVBNTZWUgYWxsIHRlc3Qgc2NvcmVzBUNFTERUZAIIDxUECUxpc3RlbmluZwcwNS8yMDE3J2NvbG9yOiMyYzY2MmQ7YmFja2dyb3VuZC1jb2xvcjojZWVmNmRiOwhBZHZhbmNlZGQCBw9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBAhTcGVha2luZwcwNS8yMDE3J2NvbG9yOiM1YTZhOTM7YmFja2dyb3VuZC1jb2xvcjojZTZlZGZmOw5FYXJseSBBZHZhbmNlZGQCCA9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBA1Db21wcmVoZW5zaW9uBzA1LzIwMTcAA04vQWQCCQ9kFggCAw9kFgJmD2QWAmYPFQEfT2FrbGFuZCBVbmlmaWVkIFNjaG9vbCBEaXN0cmljdGQCBQ8WAh8EaGQCBw8WAh8EaBYCZg9kFgJmDxUDGVRlc3REZXRhaWxzLmFzcHg/aWQ9Q0VMRFQTU2VlIGFsbCB0ZXN0IHNjb3JlcwVDRUxEVGQCCA8VBA9DRUxEVCBDcml0ZXJpb24HMDUvMjAxNwADTi9BZAIpD2QWAmYPZBYCAgEPPCsACQEADxYCHwRoZGQCKw9kFgJmD2QWBGYPD2QPEBYFZgIBAgICAwIEFgUWAh8GBQYzODYyNDQWAh8GZBYCHwZkFgIfBmQWAh8GZBYFAgUCAwIDAgMCA2RkAgIPFgIfBGgWAmYPPCsACQBkAi0PZBYEZg9kFgJmD2QWAmYPDxYCHwIFDjEwLjE5Mi4xOTMuMTI2ZGQCAQ9kFgJmD2QWBGYPDxYCHwIFDTE3Mi41OC4zNy4xMjZkZAIBDw8WAh8CBRUxMC8yNy8yMDE5IDk6NDE6MDkgUE1kZAIJD2QWAmYPZBYCAgEPZBYEZg8PZA8QFgJmAgEWAhYCHwYFAzIwMRYCHwZkFgICBQIDZGQCAg88KwAJAQAPFgQfDRYAHwtmZGQCBg8PFgIfAgUKOS4xOS4xMC4xN2RkAgcPDxYCHwIFQENvcHlyaWdodCAmY29weTsgMTk5NS0yMDE5IEFlcmllcyBTb2Z0d2FyZS4gQWxsIFJpZ2h0cyBSZXNlcnZlZC5kZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WDQUgY3RsMDAkTWFpbkNvbnRlbnQkY3RsMTEkb3BuQ2xhc3MFI2N0bDAwJE1haW5Db250ZW50JGN0bDExJG9wblBlcnNvbmFsBSFjdGwwMCRNYWluQ29udGVudCRjdGwxMSRvcG5TY2hvb2wFI2N0bDAwJE1haW5Db250ZW50JGN0bDExJG9wbkRpc3RyaWN0BSRjdGwwMCRNYWluQ29udGVudCRjdGwxMSRvcG5DbGFzc2VzJDAFJWN0bDAwJE1haW5Db250ZW50JGNoa0dhZGdldEF0dFN1bW1hcnkFKWN0bDAwJE1haW5Db250ZW50JGNoa0dhZGdldENhbGVuZGFyRXZlbnRzBSBjdGwwMCRNYWluQ29udGVudCRjaGtHYWRnZXRUYXNrcwUeY3RsMDAkTWFpbkNvbnRlbnQkY2hrR2FkZ2V0SU5WBShjdGwwMCRNYWluQ29udGVudCRjaGtHYWRnZXRSZXNvdXJjZUxpbmtzBSFjdGwwMCRNYWluQ29udGVudCRjaGtDbGFzc1N1bW1hcnkFHmN0bDAwJE1haW5Db250ZW50JGNoa0JyaWVmY2FzZQUlY3RsMDAkTWFpbkNvbnRlbnQkY2hrSUFQU3RhdHVzU3VtbWFyeQUwY3RsMDAkTWFpbkNvbnRlbnQkY3RsMTAkbHZBbGVydFRocmVzaG9sZFN0dWRlbnRzD2dkm99j88j9Yo1v346sD6Q5Is2vkaIjvCtNOgbwqSnvinA=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=CidPXrBwL8gJdzqp_wEUGo3VjnTO9xyWTu_9dZaUizWfpoKnIY8lE1XfO-iSmb1t0fCEEkQdVhXIxL3LrNydIOJ-nRppQZ-rHnn8st5drAc1&amp;t=636995930731294402" type="text/javascript"></script>
+
+<script language='javascript'>var isSafari = true;function isIE(){return false;}</script>
+<script type="text/javascript">
+//<![CDATA[
+ var isProfile_ClassSummary = 'True'; var ShowBackground_ClassSummary = 'True'; var ShowPrintButton_ClassSummary = 'False';function CalendarEvent_SetDate_(){ var strDate = (this._value.getMonth() + 1) + '/' + this._value.getDate() + '/' + this._value.getFullYear(); if(strDate.length > 0) { GeneralFunctions.CalendarEvent_SetDate(strDate, CalendarEvent_SetDate_Result_); }}function CalendarEvent_SetDate_Result_(result) { if(result == 'Reset') { ResetForm_(); } }function CalendarEvent_SetDisplay_(display) { GeneralFunctions.CalendarEvent_SetDisplay(display.value, ResetForm_); }function ResetForm_(result) { $get('ctl00_MainContent_ctl11_btnRefresh').click(); }function CloseAddEvent_Panel_(){ $get('ctl00_MainContent_ctl11_AddEvent_Panel').style.display = 'none'; return false;}function ResetFields_(){ var dt = new Date(); var today = GetValue($get('ctl00_MainContent_ctl11_txtDate_txtKendoDatePicker'), 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtTI'), '', 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker'), today, 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtED_txtKendoDatePicker'), today, 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker'), '', 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker'), '', 'txt'); SetValue($get('ctl00_MainContent_ctl11_txtDE'), '', 'txt');}function CalendarEvent_Delete_(){ var EID = GetValue($get('ctl00_MainContent_ctl11_txtEID'), 'txt'); if(confirm('Are you sure you want to delete this event?')) { GeneralFunctions.CalendarEvent_Delete(EID, CalendarEvent_Delete_Result_) }; return false;}function CalendarEvent_Delete_Result_(result) { if(result) {CloseAddEvent_Panel_(); $get('ctl00_MainContent_ctl11_btnRefresh').click(); } }function CalendarEvent_GetInfo_(){ var EID = GetValue($get('ctl00_MainContent_ctl11_txtEID'), 'txt'); var btn1 = $get('ctl00_MainContent_ctl11_btnEventOK'); var btn2 = $get('ctl00_MainContent_ctl11_btnDelete'); if((EID * 1) > 0) { SetValue(btn1, 'Save Record', 'txt'); btn2.style.display = 'block'; } else { SetValue(btn1, 'Add Event', 'txt'); btn2.style.display = 'none'; } if((EID * 1) > 0) { GeneralFunctions.CalendarEvent_GetInfo(EID, CalendarEvent_GetInfo_Result_); }}function CalendarEvent_GetInfo_Result_(result){ if(result != null) {  SetValue($get('ctl00_MainContent_ctl11_txtTI'), result[0], 'txt');  SetValue($get('ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker'), result[1], 'txt');  SetValue($get('ctl00_MainContent_ctl11_txtED_txtKendoDatePicker'), result[2], 'txt');  SetValue($get('ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker'), result[3], 'txt');  SetValue($get('ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker'), result[4], 'txt');  SetValue($get('ctl00_MainContent_ctl11_txtDE'), result[5], 'txt'); }}function CalendarEvent_Add_(){ var TI = GetValue($get('ctl00_MainContent_ctl11_txtTI'), 'txt'); var EID = GetValue($get('ctl00_MainContent_ctl11_txtEID'), 'txt'); var DT = GetValue($get('ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker'), 'txt'); var ED = GetValue($get('ctl00_MainContent_ctl11_txtED_txtKendoDatePicker'), 'txt'); var T1 = GetValue($get('ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker'), 'txt'); var T2 = GetValue($get('ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker'), 'txt'); var DE = GetValue($get('ctl00_MainContent_ctl11_txtDE'), 'txt'); var SCP = ''; var AS1 = '';; GeneralFunctions.CalendarEvent_Add(TI, EID, DT, ED, T1, T2, DE, SCP, AS1, CalendarEvent_Add_Result_); return false;}function CalendarEvent_Add_Result_(result){ if(result != 'true') { alert(result); } else { ButtonClick($get('ctl00_MainContent_ctl11_btnRefresh')); }}function ButtonClick(btn) { if(btn != null) { btn.click(); }}function GetValue(ID, type){ if((ID != null) && (type == 'txt')) { return ID.value; } else if((ID != null) && (type == 'lbl')) { return ID.innerHTML; } return '';}function SetValue(ID, value, type){ if((ID != null) && (type == 'txt')) { ID.value = value; return true; } else if((ID != null) && (type == 'lbl')) { ID.innerHTML = value; return true; } return false;}function Confirmation(){if (true){ $('#ctl00_MainContent_ctl07_hiddenbutton').trigger('click');} else {const text = 'There is insufficent data available to print the CAASPP Report. Would you like to print the Test Scores Report instead?';aeriesWin.prototype.confirm(text, Confirmation_Callback);}}function Confirmation_Callback(result) {  if (result) {  $('#ctl00_MainContent_ctl07_hiddenbutton').trigger('click');  }}//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=4jYSu9T7d7HoN4C-n0A0-J8ao0cFbl1V1xhzqgYFFe3rvGu4VL_AUbt2uWxBpRTcM0vUu1Q5e23ro_i3lXsM5QScRTfmO_2Bv6JeQjF1dSj5617m8KjPlqQ4BoDImdP0c11oc5708VZEsFKWuZmmTQB6RDwds79D6qmf613tylI1&amp;t=10c151ff" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=FpKfREJxyMQxvoPBnHjO-usSMsQ4wUg7P5nOWnRtnwrGhxNa4KcaGvd5p3UyQbjuyZ0ORxV-Oer-S0e26YRFQTYxwPGSARaQ6Jmp1_B9_3hZAs_KDtEmI-OwPFlq69XS-jEzo7kO21qzKAvI39t-7G_irLfQ5FhpVZ_3u20c2eQsIrtGj9UI4YH5hps-1j9L0&amp;t=10c151ff" type="text/javascript"></script>
+<script src="/Scripts/AjaxControlToolkit/Bundle?v=Q8zwOlD68e_y2f0ZSls6DONz6PXxv7xmJgluhsnbLu01" type="text/javascript"></script>
+<script src="SetClientOptions.asmx/js" type="text/javascript"></script>
+<script src="GeneralFunctions.asmx/js" type="text/javascript"></script>
+<script src="SecurityFunctions.asmx/js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1B7A151F" />
+</div>
+	<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$TheMasterScriptManager', 'aspnetForm', ['tctl00$MainContent$ctl11$txtDate$updatepanel1','','tctl00$MainContent$ctl11$txtDT$updatepanel1','','tctl00$MainContent$ctl11$txtED$updatepanel1','','tctl00$MainContent$ctl11$txtT1$updatepanel1','','tctl00$MainContent$ctl11$txtT2$updatepanel1',''], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+	<div style="height: 100%" class="view" data-root-url="https://parent.ousd.org/" data-school-code="201">
+		<table class="full NoPadding a-expand">
+			<tr id="ctl00_trTop">
+	<td class="ac" valign="top">
+				<nav class="navbar navbar-l" id="navparent">
+				<div class="container-fluid" id="nav-container">
+					<div class="navbar-header" style="float:left;">
+						<div class="pull-left">
+							<div class="sidebar-logo-a">
+								<a href="Default.aspx" title="Aeries Home">
+									<img alt="Aeries" title="Aeries Student Information System" src="images/aeries-logo-a.svg" onerror="this.src='images/aeries-logo-a.png'; this.onerror=null;"/>
+								</a>
+							</div>
+						</div>
+
+						<ul class="nav navbar-nav navbar-left" id="nav-school-settings">
+							<li id="ctl00_schoolYearNav" class="school-year-nav dropdown-submenu aeries-background-green-light">							
+								<span id="ctl00_lblSchoolYear" class="school-year-nolink-nav-text NoWrap">2019-2020</span>
+							</li>
+							<li class="dropdown-submenu" id="school-dropdown-wrapper">
+								<span id="ctl00_lblSchoolName" title="School 201" class="school-name-nolink-nav-text NoWrap">Claremont</span>
+							</li>
+							<li>
+								<input name="ctl00$SC" type="hidden" id="ctl00_SC" class="MasterSC" value="201" />
+										<input name="ctl00$SN" type="hidden" id="ctl00_SN" class="MasterSN" value="17648" />
+										<input name="ctl00$PID" type="hidden" id="ctl00_PID" class="MasterPID" value="386244" />
+										
+							</li>							
+						</ul>						
+					</div>
+						<ul class="nav navbar-nav navbar-right" id="nav-settings">
+							<li class="dropdown-submenu nav-buttons">
+								<a href="#" class="dropdown-toggle expandable" data-toggle="dropdown" id="nav-account-dropdown-icon" title="Settings">
+									<span class="normalmode">
+										<span id="ctl00_lblWelcomeName">s_amin.alogaili@ousd.org</span>
+										<span class="icon-collapsed"></span>
+									</span>
+									<span class="tinymode">
+										<span id="collapsed-settings-icon" class="k-icon k-i-custom"></span>
+									</span>									
+								</a>
+								<ul class="dropdown-menu SubTab forceRight" id="nav-account-dropdown" style="margin-top:0; padding-top:0;">		
+									<li id="mobileTestdrive" class="zebra">
+										<a id="goToMobile" href="LoginParent.aspx?RedirectToApp=True">Mobile Portal</a>
+									</li>						
+									
+									
+									<li class="zebra">
+										<a id="aChangePWD" css="ContextMenuItem" href="/ChangePassword.aspx">Change Password</a>
+									</li>
+									
+									<li class="zebra">
+										<a id="aChangeEM" css="ContextMenuItem" href="/ChangeEmail.aspx">Change Email</a>
+									</li>																		
+									
+									<li class="zebra">
+										<a id="aAddSTU" css="ContextMenuItem" href="/AddNewStudentToParent.aspx">Add New Student To Your Account</a>										
+									</li>
+									<li class="zebra">
+										<a id="aLogOut" css="ContextMenuItem" href="/LogOut.aspx">Log Out</a>
+									</li>									
+								</ul>
+							</li>
+						</ul>
+						
+				</div>
+				</nav>
+				<div id="ctl00_ParNav_ParNav"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td align="left" class="raised "><table class="menutable" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><div id="Top_1" class="Top_Parent"><a class="topdynamicmenu" href="Default.aspx" name="Home" id="Home" target="" aria-haspopup="true" onClick="return true">Home</a></div></td><td><div id="Top_2" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Student Info" id="Student Info" target="" aria-haspopup="true" onClick="return true">Student Info</a><div id="Sub_2" class="SubTab"><a class="zebra" href="StudentProfile.aspx" name="Profile" id="Profile">Profile</a><a class="zebra" href="Students.aspx" name="Demographics" id="Demographics">Demographics</a><a class="zebra" href="EmergencyContacts.aspx" name="Contacts" id="Contacts">Contacts</a></div></div></td><td><div id="Top_3" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Attendance" id="Attendance" target="" aria-haspopup="true" onClick="return true">Attendance</a><div id="Sub_3" class="SubTab"><a class="zebra" href="Attendance.aspx" name="Attendance" id="Attendance">Attendance</a><a class="zebra" href="EnrollmentHistory.aspx" name="Enrollment History" id="Enrollment History">Enrollment History</a><a class="zebra" href="AttendanceHistory.aspx" name="Attendance History" id="Attendance History">Attendance History</a></div></div></td><td><div id="Top_4" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Grades" id="Grades" target="" aria-haspopup="true" onClick="return true">Grades</a><div id="Sub_4" class="SubTab"><a class="zebra" href="GradebookSummary.aspx" name="Gradebook" id="Gradebook">Gradebook</a><a class="zebra" href="GradebookDetails.aspx" name="Gradebook Details" id="Gradebook Details">Gradebook Details</a><a class="zebra" href="StudentSBG.aspx" name="Standards Based Report Card" id="Standards Based Report Card">Standards Based Report Card</a><a class="zebra" href="StudentStandardsBasedHistory.aspx" name="Standards Based History" id="Standards Based History">Standards Based History</a><a class="zebra" href="Grades.aspx" name="Grades" id="Grades">Grades</a><a class="zebra" href="StudentGradeHistory.aspx" name="Grade History" id="Grade History">Grade History</a><a class="zebra" href="GraduationRequirements.aspx" name="Graduation Status" id="Graduation Status">Graduation Status</a><a class="zebra" href="Transcripts.aspx" name="Transcripts <span class='metadata' style='display: none;'>History</span>" id="Transcripts <span class='metadata' style='display: none;'>History</span>">Transcripts <span class='metadata' style='display: none;'>History</span></a><a class="zebra" href="StudentStandardsBasedProgress.aspx" name="Standards Based Progress Dashboard" id="Standards Based Progress Dashboard">Standards Based Progress Dashboard</a></div></div></td><td><div id="Top_5" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Classes" id="Classes" target="" aria-haspopup="true" onClick="return true">Classes</a><div id="Sub_5" class="SubTab"><a class="zebra" href="Classes.aspx" name="Classes" id="Classes">Classes</a></div></div></td><td><div id="Top_6" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Medical" id="Medical" target="" aria-haspopup="true" onClick="return true">Medical</a><div id="Sub_6" class="SubTab"><a class="zebra" href="Immunizations.aspx" name="Immunizations" id="Immunizations">Immunizations</a><a class="zebra" href="Hearing.aspx" name="Hearing" id="Hearing">Hearing</a><a class="zebra" href="Vision.aspx" name="Vision" id="Vision">Vision</a></div></div></td><td><div id="Top_7" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Test Scores" id="Test Scores" target="" aria-haspopup="true" onClick="return true">Test Scores</a><div id="Sub_7" class="SubTab"><a class="zebra" href="TestDetails.aspx" name="Test Details" id="Test Details">Test Details</a><a class="zebra" href="StateTestScoresReports.aspx" name="State Test Scores Reports" id="State Test Scores Reports">State Test Scores Reports</a><a class="zebra" href="TestScores.aspx" name="Test Scores" id="Test Scores">Test Scores</a><a class="zebra" href="CollegeTestScores.aspx" name="College Entrance Tests" id="College Entrance Tests">College Entrance Tests</a></div></div></td><td><div id="Top_8" class="Top_Parent"><a class="topdynamicmenu" href="javascript:void(0);" name="Change Student" id="Change Student" target="" aria-haspopup="true" onClick="return true">Change Student</a><div id="Sub_8" class="SubTab"><a class="zebra" href="ChangeStudent.aspx?cache=11%2f7%2f2019+11%3a26%3a15+AM&SC=201&SN=17648&ReturnPage=default.aspx&name=201_17648&id=201_17648" name="Alogaili, Amin S - Grd 6 - Claremont" id="Alogaili, Amin S - Grd 6 - Claremont">Alogaili, Amin S - Grd 6 - Claremont</a><a class="zebra" href="AddNewStudentToParent.aspx" name="Add New Student To Your Account" id="Add New Student To Your Account">Add New Student To Your Account</a></div></div></td></td></tr></table></td></tr></table></div>
+			</td>
+</tr>
+
+			<tr style="background-color:#F5F5F5; height: 525px; min-height:525px;"><td class="al" valign="top" style="padding: 5px 5px 5px 5px; min-height:525px;">
+				<div style="width:100%;"><span id="ctl00_lblAlert" class="RedText"></span></div>
+
+				
+				
+
+				
+		
+
+	
+    <div>
+		<div>
+			<!-- *** Required to register AjaxControlToolkit *** -->
+			
+					
+		</div>
+		
+
+		<!-- Parent Widgets -->
+		<div id="ctl00_MainContent_divParentWidgets" class="BackDrop">
+
+			<div class="a-container">
+				<div id="ParentHomeRow1" class="a-row">		
+					<div class="a-col-20 ac">
+						
+						
+						
+
+						<span id="ctl00_MainContent_lblWelcome" class="PlainDataClear" style="font-weight:bold;">Welcome to the Aeries Portal for Amin</span>
+						<div id="divParentNotification" class="HCell" style="padding: 10px; border:solid 1px #ddd;  display:none; width: 100%;" >
+							<span id="ctl00_MainContent_lblParentNotification" style="font-weight:bold;"></span>&nbsp; <a id="ctl00_MainContent_linkParentNotification" href="ParentNotificationPreferences.aspx">Modify</a>
+						</div>
+						
+						
+					</div>
+				</div>
+				
+
+				
+				
+
+				<div id="ParentHomeRow2" class="a-row">					
+
+                    <div id="ParentHomeRow2_Left" class="a-col-5">
+						
+					</div>	
+
+					<div id="ParentHomeRow2_Right" class="a-col-15" style="padding-left:15px;">
+						  
+<script>
+
+	$().ready(function () {
+
+		$.ajax({
+			type: "POST",
+			cache: false,
+			contentType: "application/json; charset=utf-8",
+			url: $(".view").data("root-url") + "Widgets/ClassSummary/home",
+			data: JSON.stringify({ "IsProfile": isProfile_ClassSummary.toString(), "ShowPrintButton": ShowPrintButton_ClassSummary.toString(), "ShowBackground": ShowBackground_ClassSummary.toString() }),
+			dataType: 'html',
+			success: function (data) {
+				$(".classSummaryContainer").html(data);
+
+				var dsClasses = new kendo.data.DataSource({
+					transport: {
+						read: function (options) {
+							$.ajax({
+								type: "GET",
+								url: $(".view").data("root-url") + "Widgets/ClassSummary/GetClassSummary?IsProfile=" + isProfile_ClassSummary.toString(),
+								data: {},
+								cache: false,
+								success: function (response) {
+									if (response.length) {
+										var $grid = $("#gridClasses").data("kendoGrid");
+
+										var showAllTerms = $('#ShowAllTerms').val().toLowerCase() == 'true';
+										var profileView = isProfile_ClassSummary.toString().toLowerCase() == 'true';
+
+										var groups = [];
+
+										if (profileView) {
+											var cds = $("#districtCDS").val();
+											var sc = $("#schoolNumber").val();
+
+
+											var groupByDistricts = response.some(function (item) { return item.DistrictCDS != cds; });
+
+											if (groupByDistricts) {
+												groups.push({ "field": "DistrictName" });
+												groups.push({ "field": "SchoolSort" });
+											}
+											else {
+												var groupBySchools = response.some(function (item) { return item.SchoolNumber != sc; });
+
+												if (groupBySchools) { groups.push({ "field": "SchoolSort" }); }
+											}
+
+
+										}
+
+										if (showAllTerms) { groups.push({ "field": "TermGrouping", "dir": "asc" }) }
+
+										$grid.dataSource.group(groups);
+									}
+
+									options.success(response);
+								}
+							});
+						}
+					},
+					sort: { field: "Period", dir: "asc" }
+				});
+
+				var $gridClasses = $("#gridClasses").data("kendoGrid");
+
+				if ($gridClasses) {
+					$gridClasses.setDataSource(dsClasses);
+					$gridClasses.dataSource.read();
+				}
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				$(".classSummaryContainer").html('<div class="CatHeader widget-head"><div class="widget-title">Class Summary (Failed to Load)</div></div>');
+			}
+		});
+
+	});
+
+</script>
+
+<script type="text/javascript" src="Scripts/require/widgets/views/classsummary/classsummary.js?vsn=9.19.10.17"></script>
+
+<div id="ctl00_MainContent_ctl06_divClassSummary" class="classSummaryContainer">
+	<div class="CatHeader widget-head">
+		<div class="widget-title">Class Summary</div>
+	</div>
+	<div class="widget-body text-center"><span class="fa fa-spin fa-spinner fa-2x"></span></div>
+</div>
+	
+
+						<div id="ctl00_MainContent_ParentAdminCalendarEventsWrapper" class="col-sm-7 col-md-8 col-lg-8" style="padding-bottom: 10px;">
+							
+
+<div class="a-obj">
+	<table class="NoPadding a-expand">
+		<tr class="SubHeaderRow">
+			<td class="NewTL"></td>
+			<td class="CatHeader ac"><span id="ctl00_MainContent_ctl11_lblCalendar">Calendar</span></td>
+						
+			<td class="NewTR"></td>
+		</tr>
+		<tr class="SubHeaderRow">
+			<td class="DataLE"></td>
+			<td align="center" class="HCell">
+				<div id="ctl00_MainContent_ctl11_txtDate_updatepanel1" style="display: inline-block;">
+	
+        <input name="ctl00$MainContent$ctl11$txtDate$txtKendoDatePicker" type="text" value="11/07/2019" id="ctl00_MainContent_ctl11_txtDate_txtKendoDatePicker" style="width:120px;font-size:Small;" />
+        
+</div>
+				
+			</td>
+			<td class="DataLER"></td>
+		</tr>
+		
+		<tr>
+			<td class="DataLE"></td>
+			<td class="Data al">
+				<table border="0" style="padding: 1px; border-collapse: collapse; border-style: none; width: 100%;"><tr class="PlainData">
+					<td class="al">
+						<span class="k-button-add">
+						<img src="images/addrcd.gif" id="ctl00_MainContent_ctl11_imgAddEvent" border="0" alt="Add New Event" class="Clickable" onclick="$get(&#39;ctl00_MainContent_ctl11_txtEID&#39;).value = &#39;0&#39;;DisplayOnCenterScreen($get(&#39;ctl00_MainContent_ctl11_AddEvent_Panel&#39;));ResetFields_();return false;" />
+						<span id="ctl00_MainContent_ctl11_lblAddEvent" class="Clickable" onclick="$get(&#39;ctl00_MainContent_ctl11_txtEID&#39;).value = &#39;0&#39;;DisplayOnCenterScreen($get(&#39;ctl00_MainContent_ctl11_AddEvent_Panel&#39;));ResetFields_();return false;">Add New Event</span>
+						</span>
+						<input type="submit" name="ctl00$MainContent$ctl11$btnRefresh" value="Refresh" id="ctl00_MainContent_ctl11_btnRefresh" style="display:none;" />
+						<span id="ctl00_MainContent_ctl11_lblTest"></span>
+					</td>
+					<td class="ar">
+							<span id="ctl00_MainContent_ctl11_lblDisplay">Display: </span>
+							<select name="ctl00$MainContent$ctl11$CalendarView" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainContent$ctl11$CalendarView\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_MainContent_ctl11_CalendarView">
+	<option selected="selected" value="Day" ID="lblDay">Day</option>
+	<option value="Month" ID="lblMonth">Month</option>
+
+</select>
+					</td>
+				</tr></table>
+			</td>
+			<td class="DataLER"></td>
+		</tr>
+		
+		<div id="ctl00_MainContent_ctl11_divDay">
+	
+			
+					<tr id="ctl00_MainContent_ctl11_rptCalendarDay_ctl00_trFooterNoRecords" style="height:200px;">
+		<td class="DataLE"></td>
+		<td class="Data ac">You have no events for this date</td>
+		<td class="DataLER"></td>
+	</tr>
+	
+				
+		
+</div>
+		
+		
+		
+			
+		
+		<tr style="height:2px;">
+			<td class="NewBL" style="height:2px; width: 2px;"></td>
+			<td class="DataBottom ac" colspan="3" style="height:2px;"></td>
+			<td class="NewBR" style="height:2px; width: 2px"></td>
+		</tr>	
+	</table>
+	
+	<!-- Add Event Form - Beginning -->
+	
+	<div id="ctl00_MainContent_ctl11_AddEvent_Panel" style="border-style:None;display: none; left:20px; width: 574px; z-index: 9;">
+	
+		
+		<table border="0" class="NoPadding a-expand" style="border-collapse: collapse; border-style: none ;width: 568px;">
+			<tr class="SubHeaderRow">
+				<td class="DataLE"></td>
+				<td id="ctl00_MainContent_ctl11_tdAddEventTop" align="center" class="CatHeader" style="cursor: move; width: 100%"><b>Add New Event</b>
+						<div class="widget-options">
+						<span id="ctl00_MainContent_ctl11_btnCancelTop" class="Clickable" onclick="$get(&#39;ctl00_MainContent_ctl11_AddEvent_Panel&#39;).style.display = &#39;none&#39;;"><i class='fa fa-times'></i></span>
+					</div>
+				</td>
+	
+			
+				<td class="DataLER"></td>
+			</tr>
+		</table>
+		
+		<table class="NoPadding a-expand" style="width: 570px;">
+			<tr>
+				<td class="DataLE"></td>
+				<td class="ac">
+					<table class="NoPadding a-expand">
+						<tr><td class="ac">
+					
+							<table class="NoPadding a-expand">
+							<tr class="SubHeaderRow">
+								<td class="HCellT al"><b>&nbsp;Title&nbsp;</b></td>
+							</tr>
+							
+							<tr>
+								<td class="Data al">
+									<input name="ctl00$MainContent$ctl11$txtTI" type="text" id="ctl00_MainContent_ctl11_txtTI" class="k-textbox" style="width:350px;" />
+									<input type="hidden" name="ctl00$MainContent$ctl11$txtEID" id="ctl00_MainContent_ctl11_txtEID" value="0" />
+								</td>
+							</tr>
+							</table>
+						</td></tr>
+						
+						<tr><td align="center">
+							<table border="0" style="border-collapse: collapse; border-color: black; width:100%;">
+							<tr class="SubHeaderRow">
+								<td class="HCellT ac"><b>&nbsp;Start Date&nbsp;</b></td>
+								<td class="HCellT ac"><b>&nbsp;End Date&nbsp;</b></td>
+								<td class="HCellT ac"><b>&nbsp;Start Time&nbsp;</b></td>
+								<td class="HCellT ac"><b>&nbsp;End Time&nbsp;</b></td>
+							</tr>
+							<tr>
+								<td class="Data ac">&nbsp;<div id="ctl00_MainContent_ctl11_txtDT_updatepanel1" style="display: inline-block;">
+		
+        <input name="ctl00$MainContent$ctl11$txtDT$txtKendoDatePicker" type="text" id="ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker" style="width:120px;font-size:Small;" />
+        
+	</div></td>
+								<td class="Data ac">&nbsp;<div id="ctl00_MainContent_ctl11_txtED_updatepanel1" style="display: inline-block;">
+		
+        <input name="ctl00$MainContent$ctl11$txtED$txtKendoDatePicker" type="text" id="ctl00_MainContent_ctl11_txtED_txtKendoDatePicker" style="width:120px;font-size:Small;" />
+        
+	</div></td>
+								
+								<td class="Data ac">
+									<div id="ctl00_MainContent_ctl11_txtT1_updatepanel1" style="display: inline-block;">
+		
+		<input name="ctl00$MainContent$ctl11$txtT1$txtKendoTimePicker" type="text" id="ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker" style="width: 100px;" />
+	
+	</div>
+
+								</td>
+								<td class="Data ac">
+									<div id="ctl00_MainContent_ctl11_txtT2_updatepanel1" style="display: inline-block;">
+		
+		<input name="ctl00$MainContent$ctl11$txtT2$txtKendoTimePicker" type="text" id="ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker" style="width: 100px;" />
+	
+	</div>
+
+								</td>
+							</tr>
+							</table>
+						</td></tr>
+
+						<!-- *** 07/01/2015 HB -- teacher event -->
+						
+						<tr><td class="ac">
+							<table class="NoPadding a-expand">
+							<tr class="SubHeaderRow">
+								<td class="HCellT ac"><b>&nbsp;Description&nbsp;</b></td>
+							</tr>
+							<tr>
+								<td class="Data ac">&nbsp; <textarea name="ctl00$MainContent$ctl11$txtDE" rows="4" cols="20" id="ctl00_MainContent_ctl11_txtDE" style="width:300px;">
+</textarea>&nbsp;</td>
+							</tr>
+							</table>
+						</td></tr>
+					</table>
+				</td>
+				
+				<td class="DataLER"></td>
+			</tr>
+				
+			<tr>
+				<td class="DataLE"></td>
+				<td align="center" class="Data" style="width: 400px;">
+					<table border="0" style="border-collapse:collapse;border-style:none;">
+						<tr>
+							<td align="center"><input type="submit" name="ctl00$MainContent$ctl11$btnEventOK" value="Add Event" onclick="return CalendarEvent_Add_();" id="ctl00_MainContent_ctl11_btnEventOK" class="k-button" /></td>
+							<td align="center"><input type="submit" name="ctl00$MainContent$ctl11$btnDelete" value="Delete" onclick="return CalendarEvent_Delete_();" id="ctl00_MainContent_ctl11_btnDelete" class="k-button" style="display: none;" /></td>
+							<td align="center"><input type="submit" name="ctl00$MainContent$ctl11$btnCancel" value="Cancel" onclick="return CloseAddEvent_Panel_();$get(&#39;ctl00_MainContent_ctl11_AddEvent_Panel&#39;).style.display = &#39;none&#39;;" id="ctl00_MainContent_ctl11_btnCancel" class="k-button" /></td>
+						</tr>
+					</table>
+				</td>
+				<td class="DataLER"></td>
+			</tr>
+			<tr style="height:2px;">
+				<td class="NewBL" style="height:2px; width: 2px;"></td>
+				<td class="DataBottom ac" style="height:2px;"></td>
+				<td class="NewBR" style="height:2px; width: 2px"></td>
+			</tr>
+		</table>
+	
+</div>
+
+	<!-- Add Event Form - Ending -->
+
+<label id="lblRootURL" style="display: none;">https://parent.ousd.org/</label>
+</div>
+<script type="text/javascript">
+	function txtED_Changed() {
+		var dt = $("#" + 'ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker');
+		var ed = $("#" + 'ctl00_MainContent_ctl11_txtED_txtKendoDatePicker');
+		var dt1 = new Date(dt.val());
+		var dt2 = new Date(ed.val());
+
+		if ((dt1 != NaN) && (dt2 != NaN)) {
+			if (dt1.getTime() > dt2.getTime()) {
+				ed.val(dt.val());
+			}
+		}
+	}
+
+	function calendarFilter_click() {
+		var div = $("#divFilter");
+		var isVisible = false;
+		var left = 250;
+
+		if (div.width() <= 200) { left = 100; }
+
+		div.css({
+			top: $("#btnCalenderFilter").offset().top + 23,
+			left: $("#btnCalenderFilter").offset().left - left
+ 		});
+
+		if (div.attr("style") == undefined) {
+			isVisible = true;
+		}
+		else if (div.attr("style").indexOf("block") >= 0) {
+			isVisible = true;
+		}
+		
+		if (isVisible) {
+			div.fadeOut(700, function () {
+				div.css("display", "none");
+			});
+		}
+		else {
+			div.fadeIn(700, function () {
+				div.css("display", "block");
+			});
+		}
+	}
+
+	function ddlEventScope_OnSelect(e) {
+		var sp = "";
+		var tmp = null;
+		var root = $("#lblRootURL").html();
+
+		if (root[root.length] != "/") { root += "/"; }
+
+		if (typeof e == "object") {
+			sp = this.dataItem(e.item).value;
+		}
+		else {
+			tmp = e.split("|");
+			sp = tmp[0];
+		}
+
+		var webMethod = root + "portal/teacher/event/getassociation/scopeid/" + sp + "/";
+			
+		var request = $.ajax({
+			url: webMethod,
+			type: "GET",
+			cache: false,
+			dataType: "json",
+			contentType: "application/json; charset=utf-8"
+		});
+
+		request.done(function (result) {
+			$("#ddlAssociation").kendoDropDownList({
+				dataTextField: "Description",
+				dataValueField: "Code",
+				dataSource: result
+			});
+
+			if (tmp != null) { $("#ddlAssociation").data("kendoDropDownList").value(tmp[1]); }
+		});
+
+		request.fail(function (jqXHR, textStatus) {
+			console.log("ddlEventScope_OnSelect Request Failed: " + jqXHR.responseText);
+		});
+	}
+
+	$(document).ready(function () {
+		data = [];
+		data.push({ text: "Personal - just you", value: "PER" });
+
+		
+		var classes = $("#" + 'ctl00_MainContent_ctl11_opnClasses');
+		if (classes) { $("#divClasses").css("display", 'inline-block'); }
+
+		$("#divFilter").css("width", "456px");
+		data.push({ text: "Section - one of your classes", value: "MST" });
+		data.push({ text: "Course - all of your classes for a course", value: "CRS" });
+		
+
+		data.push({ text: "Teacher - all of your classes", value: "TCH" });
+
+		if ($("#ddlEventScope").length > 0) {
+			$("#ddlEventScope").kendoDropDownList({
+				dataTextField: "text",
+				dataValueField: "value",
+				dataSource: data,
+				select: ddlEventScope_OnSelect
+			});
+
+			$("#ddlEventScope").data("kendoDropDownList").select(0);
+			ddlEventScope_OnSelect("PER|NONE");
+
+			$("#btnCalenderFilter").bind("click", calendarFilter_click);
+			$("#divEventTypes input[type='button']").on("click", function () {
+				$("#divFilter").fadeOut(700, function () {
+					$("#" + 'ctl00_MainContent_ctl11_btnRefresh').click();
+				});
+			});
+		}
+	});
+</script>
+
+<style type="text/css">
+.calendar-filter {
+	font-size: 12pt;
+	color: #06C;
+}
+.calendar-filter:hover {
+	color: #FFF;
+}
+
+.bgClass {
+	border: 1px solid #9DE788;
+	background-color: #9DE788;
+}
+
+.bgPeronsal {
+	border: 1px solid #F00;
+	background-color: #F00;
+}
+
+.bgSchool {
+	border: 1px solid #FF0;
+	background-color: #FF0;
+}
+
+.bgDistrict {
+	border: 1px solid #699;
+	background-color: #699;
+}
+
+#divFilter {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	border: 2px solid #92B8CE;
+	background-color: #fff;
+	z-index: 10000;
+}
+
+#divEventTypes, #divClasses {
+	width: 200px;
+	height: 200px;
+	overflow: auto;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#divEventTypes ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#divEventTypes ul li {
+	height: 23px;
+	text-align: left;
+	vertical-align: top;
+	padding-top: 5px;
+	padding-left: 3px;
+}
+
+#divEventTypes ul li:hover {
+	cursor: pointer;
+	background-color: #e3e3e3;
+}
+
+#divEventTypes ul li label {
+	vertical-align: top;
+}
+
+#divEventTypes div, #divClasses div {
+	height: 25px;
+	padding-top: 5px;
+	background-color: #ccc;
+	font-weight: bold;
+}
+
+#divEventTypes input[type='button'] {
+	width: 100px;
+	margin-top: 10px;
+}
+
+#divClasses {
+	width: 252px;
+	border-left: 1px solid #fff;
+}
+
+#divClasses table {
+	width: 233px;
+	border: none;
+	border-spacing: 0;
+	border-collapse: collapse;
+	background-color: #f9f9f9;
+}
+
+#divClasses table td {
+	height: 23px;
+	padding-top: 5px;
+	border: 1px solid transparent;
+}
+
+#divClasses table td:hover {
+	cursor: pointer;
+	background-color: #e1e8fe;
+}
+
+#divClasses table tr:nth-child(even) {
+	background-color: #e3e3e3;
+}
+
+#divClasses table tr td label {
+	vertical-align: top;
+}
+
+.k-item{
+	word-break:keep-all !important;
+}
+</style>
+							<div class="widget-footer"><a href="FullCalendar.aspx">Go To Calendar <span class="fa fa-arrow-circle-right"></span></a></div>
+						</div>
+					</div>				
+                </div>			
+
+				<div id="ParentHomeRow3" class="a-row">
+					<div class="a-col-12">
+					
+						
+
+<link rel="stylesheet" type="text/css" href="StyleSheets/QuickOptions.css" />
+<link rel="stylesheet" type="text/css" href="StyleSheets/AttNotificationsStyle.css" />
+<link rel="stylesheet" type="text/css" href="StyleSheets/aeries-alert-thresholds.css" />
+
+
+
+
+
+
+	
+
+
+
+
+
+<script type="text/javascript">
+
+	var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+	prm.add_endRequest(function () {
+		initDropDowns();
+	});
+
+	function initDropDowns() {
+		$('select[id*=ddlTY]').kendoDropDownList({ dataTextField: "text", dataValueField: "value" });
+		$('select[id*=ddlCP]').kendoDropDownList({ dataTextField: "text", dataValueField: "value" });
+		$('select[id*=ddlDP]').kendoDropDownList({ dataTextField: "text", dataValueField: "value" });
+	}
+	
+	$().ready(function () {
+		initDropDowns();
+	});
+
+	$('.showAlertThresholdAddRecord').click(function () {
+		$(this).parent().fadeOut();
+		$('.alertThresholdAddRecord').fadeIn();
+	});
+
+
+</script>
+
+						
+
+																		
+						
+						<table id="ctl00_MainContent_dlAttSummaryPeriod" cellspacing="0" style="border-width:0px;width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+								<tr class="SubHeaderRow">
+									<td class="NewTL"></td>
+									<td class="CatHeader ac" colspan="13"><a href="Attendance.aspx">Attendance Summary</a></td>
+									<td class="NewTR"></td>
+								</tr>
+								<tr class="SubHeaderRow">
+									<td class="DataLE"></td>
+									<td class="HCell ac">Code</td>
+									<td class="HCell al">Description</td>
+									<td class="HCell ac">All</td>
+									<td class="HCell ac">0</td>
+									<td class="HCell ac">1</td>
+									<td class="HCell ac">2</td>
+									<td class="HCell ac">3</td>
+									<td class="HCell ac">4</td>
+									<td class="HCell ac">5</td>
+									<td class="HCell ac">6</td>
+									<td class="HCell ac">7</td>
+									<td class="HCell ac">8</td>
+									<td class="HCell ac">9</td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac">A</td>
+									<td class="Data al">UNVERIFIED</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">2</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac">I</td>
+									<td class="Data al">ILLNESS</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac">T</td>
+									<td class="Data al">TARDY</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">10</td>
+									<td class="Data ac">4</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">11</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac">U</td>
+									<td class="Data al">UNEXCUSED</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">4</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac">X</td>
+									<td class="Data al">EXCUSED</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac"></td>
+									<td class="Data al">_*TOTALS*_</td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="Data ac"></td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac"></td>
+									<td class="Data al">EXCUSED</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac">4</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">4</td>
+									<td class="Data ac">4</td>
+									<td class="Data ac">4</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac">0</td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr>
+									<td class="DataLE"></td>
+									<td class="Data ac"></td>
+									<td class="Data al">UNEXCUSED</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac">6</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">3</td>
+									<td class="Data ac">2</td>
+									<td class="Data ac">1</td>
+									<td class="Data ac">0</td>
+									<td class="Data ac">0</td>
+									<td class="DataLER"></td>
+								</tr>
+							</td>
+	</tr><tr>
+		<td>
+								<tr style="height:2px;">
+									<td class="NewBL" style="height:2px; width:2px;"></td>
+									<td class="DataBottom ac" colspan="13" style="height:2px;"></td>
+									<td class="NewBR" style="height:2px; width:2px;"></td>
+								</tr>
+							</td>
+	</tr>
+</table>							
+					</div>
+
+					<div class="a-col-8">
+													
+						<div id="divAttSummaryDaily" class="a-obj">
+							
+						</div>						
+						
+						
+
+	
+			<div id="quick-resources" class="widget-wrapper">
+				
+				<div class="CatHeader widget-head">
+					<div class="widget-options pull-right">
+						<span class="icon-expanded widget-collapse"></span>
+					</div>
+					<div class="widget-title">Resources</div>
+				</div>
+				<div class="widget-body" style="position: relative;">
+					<table class="table table-hover" style="margin-bottom: 0;z-index:2;position: relative;">
+						<thead>
+							<tr class="SubHeaderRow">
+								<th class="HCell al">Site</th>
+								<th class="HCell al">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+		
+					</tbody>			
+				</table>
+				<div class="background-icon text-center">
+					<span class="fa fa-files-o fa-4x aeries-grey"></span>
+				</div>
+				</div>
+			</div>
+		
+						
+
+<style type="text/css">
+	.quick-button-small {
+		-webkit-border-radius: 5px 5px 5px 5px;
+		-moz-border-radius: 5px 5px 5px 5px;
+		border-radius: 5px 5px 5px 5px;
+		height: 20px;
+		font-size: 11.5px;
+		font-family: Arial, Tahoma, Helvetica;
+		background-color: white;
+		border:1px solid #AEAEAE;
+	}
+	.quick-button-small:hover
+		{
+		background-color: #E3E3E3;
+		}
+	
+</style>
+<div class="a-obj">
+	<table id="ctl00_MainContent_ctl07_tblEverything" class="NoPadding a-expand widget-wrapper">
+	<tr>
+		<td><div class="CatHeader widget-head">Most Recent Test Results</div></td>
+	</tr>
+	<tr>
+		<td>
+
+				<div id="ctl00_MainContent_ctl07_divCA" class="widget-body" style="padding:4px;">
+
+					<table id="tblTST" class="NoPadding a-expand">
+						
+								
+								
+								<tr id="ctl00_MainContent_ctl07_rptQuickTestSCores_ctl00_trHeader" class="SubHeaderRow">
+			<td class="HCell al">Test</td>
+			<td class="HCell ac">Taken</td>
+			<td class="HCell ac">Result</td>
+		</tr>
+		
+								<tr id="ctl00_MainContent_ctl07_rptQuickTestSCores_ctl00_trTestHeader" class="SubHeaderRow">
+			<td class="HCell al" colspan="3">
+										<a href='TestDetails.aspx?id=SBAC' target="_self" title='See all test scores'>SBAC</a>&nbsp;&nbsp;
+										<input type="submit" name="ctl00$MainContent$ctl07$rptQuickTestSCores$ctl00$btnPrintSBAC" value=" Print " onclick="Confirmation();return false;" id="ctl00_MainContent_ctl07_rptQuickTestSCores_ctl00_btnPrintSBAC" class="quick-button-small" />
+									</td>
+		</tr>
+		
+								<tr>
+									<td class="Data al">Mathematics</td>
+									<td class="Data ac">04/2019</td>
+									<td class="Data ac" style='' >Standard Nearly Met</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">English Lang Arts /Liter</td>
+									<td class="Data ac">04/2019</td>
+									<td class="Data ac" style='' >Standard Met</td>
+								</tr>
+							
+								
+								
+								
+								<tr id="ctl00_MainContent_ctl07_rptQuickTestSCores_ctl02_trTestHeader" class="SubHeaderRow">
+			<td class="HCell al" colspan="3">
+										<a href='TestDetails.aspx?id=CELDT' target="_self" title='See all test scores'>CELDT</a>&nbsp;&nbsp;
+										
+									</td>
+		</tr>
+		
+								<tr>
+									<td class="Data al">CA Eng. Lang. Dev. Test</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='color:#2c662d;background-color:#eef6db;' >Advanced</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">List. &amp; Speaking</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='' >N/A</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">Reading</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='color:#5a6a93;background-color:#e6edff;' >Early Advanced</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">Writing</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='color:#2c662d;background-color:#eef6db;' >Advanced</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">Listening</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='color:#2c662d;background-color:#eef6db;' >Advanced</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">Speaking</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='color:#5a6a93;background-color:#e6edff;' >Early Advanced</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">Comprehension</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='' >N/A</td>
+								</tr>
+							
+								
+								
+								
+								
+								<tr>
+									<td class="Data al">CELDT Criterion</td>
+									<td class="Data ac">05/2017</td>
+									<td class="Data ac" style='' >N/A</td>
+								</tr>
+							
+								<tr>
+									<td class="DataBottom ac" colspan="3" style="height:2px;"></td>
+								</tr>
+							
+					</table>
+					<input type="submit" name="ctl00$MainContent$ctl07$hiddenbutton" value="" id="ctl00_MainContent_ctl07_hiddenbutton" class="Invisible" />
+				</div>
+
+				
+			</td>
+	</tr>
+</table>
+
+</div>
+						
+						
+
+<div class="a-obj">
+	
+	
+</div>
+						
+
+
+					</div>
+				</div>
+
+				<div id="ParentHomeRow4" class="a-row">
+					<div class="a-col-20 PlainDataClear ac" style="font-size:65%; color: #333333">
+						<table id="ctl00_MainContent_tblLoginHistory" class="NoPadding a-expand">
+	<tr>
+		<td>Currently Accessing From: <span id="ctl00_MainContent_lblCurrentIP">10.192.193.126</span></td>
+	</tr>
+	<tr>
+		<td>Previously Accessed From: <span id="ctl00_MainContent_lblPrevIP">172.58.37.126</span> on <span id="ctl00_MainContent_lblPrevTimestamp">10/27/2019 9:41:09 PM</span></td>
+	</tr>
+</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Admin Widgets -->
+		
+	</div>	
+	
+	<input type="hidden" name="ctl00$MainContent$Caption" id="ctl00_MainContent_Caption" />
+
+	<script type="text/javascript">
+
+		
+			var viewParentNotification = 'false';
+			var id = '386244';
+		
+			$(document).ready(function () {			
+
+				if (viewParentNotification == "true") {
+					$("#divParentNotification").slideDown("slow");
+					$("#divParentNotification").delay(10000).slideUp();
+				}
+				else {
+					$("#divParentNotification").hide();
+				}
+
+				$("[name$='txtStuSearch']").focus();
+
+				$('#divContactsContainer').html('<div class="LoadingBox ac">Loading</div>')
+
+				$.ajax({
+					type: "POST",
+					contentType: "application/json; charset=utf-8",
+					url: $('#lblRootURL').text() + "/Widgets/QuickSearch/Contacts",
+					data: JSON.stringify({ Title: "", ResultsCollapse: false, FocusOnLoad: false }),
+					dataType: 'html',
+					success: function (data) {
+
+						$('#divContactsContainer').html(data);			
+						$('#divContactsContainer').show();
+						$('#divContactsContainer').find('table#tableQuickSearch > tbody > tr:first-child').hide()
+					}
+				});
+			});
+
+			function ShowAssociateContactWindow() {
+
+				$('#divAssociateContacts').kendoWindow();
+				$('#divAssociateContacts').show();
+
+				setTimeout(function () {
+
+					var dialog = $('#divAssociateContacts').data("kendoWindow");
+
+					dialog.setOptions({
+						appendTo: "form#aspnetForm",
+						modal: false,
+						title: 'Select Contact',
+						visible: false,
+						width: 475,
+						height: 400
+					});
+
+					dialog.center().open();
+
+				}, 100);
+			}
+
+			function CloseAssociateContactWindow() {
+
+				if (typeof $('#divAssociateContacts').data("kendoWindow") !== "undefined") {
+					$('#divAssociateContacts').data("kendoWindow").close();
+				}
+
+			}
+		
+			// *** Function required for QuickSearch ***
+			//
+			// This function determines what action is made 
+			// when data is selected in the QuickSearch partial.
+			function QuickSearchDataTransfer(JSONData, searchmode) {
+
+				var sq = JSON.parse(JSONData).Sequence;
+
+				if (searchmode === "Contact") {
+					$('input[id*=hdnCONSQ]').val(sq)
+				}
+			}
+
+		
+	</script>
+
+			</td></tr>
+			<tr><td>
+				<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+					<td style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000;" class="al">Aeries&nbsp;Version&nbsp;<span id="ctl00_lblVersion">9.19.10.17</span></td>
+					<td style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000;" class="ar"><span id="ctl00_lblCopyright">Copyright &copy; 1995-2019 Aeries Software. All Rights Reserved.</span></td>
+				</tr></table>
+			</td></tr>
+		</table>
+	</div>
+	<a id="ctl00_btnPrevious" class="hide" href="javascript:__doPostBack(&#39;ctl00$btnPrevious&#39;,&#39;&#39;)"></a> 
+	<a id="ctl00_btnNext" class="hide" href="javascript:__doPostBack(&#39;ctl00$btnNext&#39;,&#39;&#39;)"></a>
+	<span id="notification" style="display:none;"></span>
+
+
+<script type="text/javascript">
+//<![CDATA[
+function EditHomePage(){ $get('ctl00_MainContent_btnEditHomePage').click(); return false;}function ExpandOverEmptyColumns(columnOneID,columnTwoID){ if(columnOneID.children().length === 0) { columnTwoID.addClass('a-col-20'); } if(columnTwoID.children().length === 0) { columnOneID.addClass('a-col-20'); }}ExpandOverEmptyColumns($('#ParentHomeRow2_Right'),$('#ParentHomeRow2_Left'));//]]>
+</script>
+<script language='javascript'> var timeoutIsParent = true; var global_SessionTimer; var global_WarningTimer; var global_SessionTimeout = 1200000;  var global_WarningTimeout = 900000;  initSessionTimer(1200000,900000);</script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function () { $('#ctl00_MainContent_ctl11_txtDate_txtKendoDatePicker').kendoDatePicker({  format:  'MM/dd/yyyy', change: CalendarEvent_SetDate_ }); $('#ctl00_MainContent_ctl11_txtDate_txtKendoDatePicker').kendoMaskedTextBox({  mask: '00/00/0000' }); $('#ctl00_MainContent_ctl11_txtDate_txtKendoDatePicker').parent().find('span.k-i-calendar').css('margin-bottom', '5px');});$(document).ready(function () { $('#ctl00_MainContent_ctl11_txtMonth_txtKendoMonthPicker').kendoDatePicker({  start: 'year',  depth: 'year',  format:  'MMMM yyyy', change: CalendarEvent_SetDate_ });});$(document).ready(function () { $('#ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker').kendoDatePicker({  format:  'MM/dd/yyyy' }); $('#ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker').kendoMaskedTextBox({  mask: '00/00/0000' }); $('#ctl00_MainContent_ctl11_txtDT_txtKendoDatePicker').parent().find('span.k-i-calendar').css('margin-bottom', '5px');});$(document).ready(function () { $('#ctl00_MainContent_ctl11_txtED_txtKendoDatePicker').kendoDatePicker({  format:  'MM/dd/yyyy', change: txtED_Changed }); $('#ctl00_MainContent_ctl11_txtED_txtKendoDatePicker').kendoMaskedTextBox({  mask: '00/00/0000' }); $('#ctl00_MainContent_ctl11_txtED_txtKendoDatePicker').parent().find('span.k-i-calendar').css('margin-bottom', '5px');});$(document).ready(function () { if ($('#ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker').length) {  $('#ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker').kendoTimePicker();  $('#ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker').parent().find('span.k-icon.k-i-clock').css('margin-top', '7px');  $('#ctl00_MainContent_ctl11_txtT1_txtKendoTimePicker').bind('change', onChangeValue); }});var _prevTarget = null;function ShowInvalidTime(target) { $(target).css({ 'background-color': '#ffff64' }); var myWin = new aeriesWin(winType.alert, 'Oops! Please enter a valid time value.'); myWin.modal = true; myWin.displayWin(SetFocus);}function SetFocus() { if(_prevTarget != null) {  $(_prevTarget).val('').select().focus(); };}$(document).ready(function () { if ($('#ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker').length) {  $('#ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker').kendoTimePicker();  $('#ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker').parent().find('span.k-icon.k-i-clock').css('margin-top', '7px');  $('#ctl00_MainContent_ctl11_txtT2_txtKendoTimePicker').bind('change', onChangeValue); }});var _prevTarget = null;function ShowInvalidTime(target) { $(target).css({ 'background-color': '#ffff64' }); var myWin = new aeriesWin(winType.alert, 'Oops! Please enter a valid time value.'); myWin.modal = true; myWin.displayWin(SetFocus);}function SetFocus() { if(_prevTarget != null) {  $(_prevTarget).val('').select().focus(); };}Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.FloatingBehavior, {"handle":$get("ctl00_MainContent_ctl11_tdAddEventTop"),"id":"ctl00_MainContent_ctl11_dpeAddEvent_Panel"}, null, null, $get("ctl00_MainContent_ctl11_AddEvent_Panel"));
+});
+//]]>
+</script>
+</form>
+	
+	
+	
+	<script id="infoTemplate" type="text/x-kendo-template">
+        <div class="InfoSmallBox">#= message #<div class="metadata">#= meta #</div></div>
+    </script>
+
+    <script id="errorTemplate" type="text/x-kendo-template">
+        <div class="AlertSmallBox">#= message #<div class="metadata">#= meta #</div></div>
+	</script>
+
+    <script id="successTemplate" type="text/x-kendo-template">
+        <div class="SuccessSmallBox">#= message #<div class="metadata">#= meta #</div></div>
+    </script>
+
+	<script id="notificationTemplate" type="text/x-kendo-template">
+        <div class="NotificationSmallBox">#= message #<div class="metadata">#= meta #</div></div>
+    </script>
+
+    <script type="text/javascript">
+        // remove the mobile portal link on desktop browsers
+    	if (!kendo.support.mobileOS) {
+    		$('#mobileTestdrive').hide();
+        	if ($get("mobileTestdrive")) { $get("mobileTestdrive").innerHTML = ""; }
+        } else {
+            $('#mobileTestdrive').show();
+    	}
+    	window.masterSC = $('.MasterSC').val();
+    	window.masterSN = $('.MasterSN').val();
+    	window.masterID = $('.MasterPID').val();
+    </script>
+
+    <script type="text/javascript">
+	$(document).ready(function() {
+
+		window.masterSC = $('.MasterSC').val();
+		window.masterSN = $('.MasterSN').val();
+		window.masterID = $('.MasterPID').val();
+
+		
+	});
+    </script>
+
+
+</body>
+</html>
